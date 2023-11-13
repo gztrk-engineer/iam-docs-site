@@ -1,0 +1,994 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../stream-log-data/">
+      
+      
+        <link rel="next" href="../../../Other-Topics/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+    
+    
+      
+        <title>Feed audit logs to Splunk - IAM Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#feed-audit-logs-to-splunk" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="IAM Docs" class="md-header__button md-logo" aria-label="IAM Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IAM Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Feed audit logs to Splunk
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="IAM Docs" class="md-nav__button md-logo" aria-label="IAM Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    IAM Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    B2B Authentication
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            B2B Authentication
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../B2B-Authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../B2B-Authentication/how-it-works/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How it works
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../B2B-Authentication/login-members/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log in members
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../B2B-Authentication/manage-roles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manage and assign roles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    IAM More Topics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            IAM More Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    In this section
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../federate-oidc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Federate SSO through OIDC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manage-groups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manage user groups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../use-custom-sms-provider/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use custom SMS providers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../verify-id-native-vebview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IDV: Implement native webview using hosted experience
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../verify-id-web-sdk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IDV: Implement IDV through Web SDK
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Integrations
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Integrations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stream-log-data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About log streaming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Feed audit logs to Splunk
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Feed audit logs to Splunk
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-configure-a-management-app" class="md-nav__link">
+    Step 1: Configure a management app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-install-the-plugin" class="md-nav__link">
+    Step 2: Install the plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-configure-the-inputs" class="md-nav__link">
+    Step 3: Configure the inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-check-the-operation" class="md-nav__link">
+    Step 4. Check the operation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Other Topics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Other Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Other-Topics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    In this section
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Personalize app
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Personalize app
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Other-Topics/personalize-app/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personalize the application
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Other-Topics/personalize-app/stylesheet-spec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stylesheet specification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-configure-a-management-app" class="md-nav__link">
+    Step 1: Configure a management app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-install-the-plugin" class="md-nav__link">
+    Step 2: Install the plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-configure-the-inputs" class="md-nav__link">
+    Step 3: Configure the inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-check-the-operation" class="md-nav__link">
+    Step 4. Check the operation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="feed-audit-logs-to-splunk">Feed audit logs to Splunk</h1>
+<p>You can feed data to Splunk via <a href="https://splunkbase.splunk.com/app/6965">Transmit Security Events Add-on</a> . This plugin will help you keep track of user and admin activity by polling <a href="/openapi/risk/activities/">Audit Logs API</a>.   </p>
+<h2 id="step-1-configure-a-management-app">Step 1: Configure a management app</h2>
+<p>In your Transmit Security tenant, <a href="/guides/user/management_apps.md">configure a management app</a>. Give the app a suitable name, for example, <code>MySplunkLogStream</code>.  </p>
+<p><img alt="" src="../../../assets/img/siem_splunk_01.png" /> </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After saving the management app, open it again and note the <strong>Client ID</strong> and <strong>Client Secret</strong> values. You’ll need these parameters to install the Splunk App.  </p>
+</div>
+<h2 id="step-2-install-the-plugin">Step 2: Install the plugin</h2>
+<p>You have the following options:  </p>
+<ul>
+<li>Install the plugin directly from <a href="https://splunkbase.splunk.com">Splunk portal</a>. This option supports <strong>both Splunk Enterprise and Splunk Cloud</strong> environments.  </li>
+<li>Download the plugin and install it manually. This option only supports Splunk Enterprise environments and <strong>doesn't work for Splunk Cloud</strong> users. </li>
+</ul>
+<p>To install the plugin from Splunk portal:  </p>
+<ol>
+<li>While logged in, go to <strong>Apps</strong> &gt; <strong>Manage Apps</strong>, then click <strong>Browse more apps</strong>:<br />
+<img alt="" src="../../../assets/img/siem_splunk_11.png" />  </li>
+<li>Search for Transmit Security Events Add-on:<br />
+<img alt="" src="../../../assets/img/siem_splunk_12.png" />  </li>
+<li>Click <strong>Install</strong> on the <strong>Transmit Security Events Add-on</strong> tile. </li>
+<li>Log in with your Splunk username and password: 
+<img alt="" src="../../../assets/img/siem_splunk_13.png" />  </li>
+<li>Restart Splunk.  </li>
+</ol>
+<p>To install the plugin manually (only in Splunk Enterprise environments): </p>
+<ol>
+<li>Download <a href="https://splunkbase.splunk.com/app/6965">Transmit Security Audit Log Connector for Splunk</a>. </li>
+<li>On Splunk portal, go to <strong>Apps</strong> &gt; <strong>Manage Apps</strong>: <br />
+<img alt="" src="../../../assets/img/siem_splunk_02.png" /> </li>
+<li>Click <strong>Install App from File</strong>:  <br />
+<img alt="" src="../../../assets/img/siem_splunk_03.png" /> </li>
+<li>Upload the file you've downloaded from Splunkbase:<br />
+<img alt="" src="../../../assets/img/siem_splunk_04.png" /> </li>
+</ol>
+<p>After installation, the browser redirects you to the <strong>Apps</strong> page. This page now shows <strong>Transmit Security</strong> on the app list.<br />
+<img alt="" src="../../../assets/img/siem_splunk_05.png" />  </p>
+<h2 id="step-3-configure-the-inputs">Step 3: Configure the inputs</h2>
+<p>Now you need to launch the app and configure the following inputs: <br />
+- Inputs for User Activity (logins, etc.) 
+- Inputs for administrative audit logs: application created, group created, and so on</p>
+<p>To configure the inputs: </p>
+<ol>
+<li>Launch the app from the <strong>Apps</strong> page.  </li>
+<li>Click <strong>Create New Input</strong>: 
+<img alt="" src="../../../assets/img/siem_splunk_06.png" />  </li>
+<li>Configure and update the User Activity inputs:<br />
+<img alt="" src="../../../assets/img/siem_splunk_07.png" />  <ul>
+<li><strong>Name</strong>: Give the input a meaningful name, for example, <code>Transmit_User_Events</code>.  </li>
+<li><strong>Interval</strong>: Enter polling interval in seconds.  </li>
+<li><strong>Index</strong>: Use your preferred index; for example, you can choose <code>default</code> or <code>main</code>.</li>
+<li><strong>OAuth Endpoint</strong>: Token exchange endpoint: <code>https://api.transmitsecurity.io/oidc/token</code> (<code>api.eu.transmitsecurity.io</code> for the EU and <code>api.ca.transmitsecurity.io</code> for Canada).  </li>
+<li><strong>Endpoint</strong> -  Use the following value: <code>https://activities.transmitsecurity.io/v1/activities/user</code> (<code>activities-query-service.identity.security</code> for the EU and <code>activities.ca.transmitsecurity.io</code> for Canada). </li>
+<li><strong>Client ID</strong> and <strong>Client Secret</strong>: Use the values from the Management App you've created in the Transmit portal earlier. </li>
+</ul>
+</li>
+<li>Repeat step 3 for the Admin Activity inputs. Use the endpoint <code>https://activities.transmitsecurity.io/v1/activities/admin</code> (update the base URL for EU / CA), and the same <strong>Client ID</strong> / <strong>Client Secret</strong> values as in step 3.  </li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When defining the polling interval, consider the level of activity on the platform. For instance, you may want to use a longer polling interval, like <code>3600</code> (1 hour), for low traffic or a shorter interval, like <code>300</code> (5 minutes), for high-traffic situations.  </p>
+</div>
+<h2 id="step-4-check-the-operation">Step 4. Check the operation</h2>
+<p>Check how the connector works using the <strong>Search</strong> app. Include <code>sourcetype=transmit</code> in the search bar. If the search isn't working, restart Splunk. </p>
+<p><img alt="" src="../../../assets/img/siem_splunk_08.png" />  </p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/vassily-lapitsky-b4236a16/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      
+    
+  </body>
+</html>

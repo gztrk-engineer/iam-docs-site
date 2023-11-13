@@ -1,0 +1,1363 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../verify-id-native-vebview/">
+      
+      
+        <link rel="next" href="../integrations/stream-log-data/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+    
+    
+      
+        <title>IDV: Implement IDV through Web SDK - IAM Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#idv-implement-idv-through-web-sdk" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IAM Docs" class="md-header__button md-logo" aria-label="IAM Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IAM Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              IDV: Implement IDV through Web SDK
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IAM Docs" class="md-nav__button md-logo" aria-label="IAM Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    IAM Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    B2B Authentication
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            B2B Authentication
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../B2B-Authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../B2B-Authentication/how-it-works/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How it works
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../B2B-Authentication/login-members/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log in members
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../B2B-Authentication/manage-roles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manage and assign roles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    IAM More Topics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            IAM More Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    In this section
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../federate-oidc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Federate SSO through OIDC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manage-groups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manage user groups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../use-custom-sms-provider/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use custom SMS providers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verify-id-native-vebview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IDV: Implement native webview using hosted experience
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    IDV: Implement IDV through Web SDK
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    IDV: Implement IDV through Web SDK
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    How it works
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-configure-your-app" class="md-nav__link">
+    Step 1: Configure your app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-implement-callback" class="md-nav__link">
+    Step 2: Implement callback
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-load-sdk" class="md-nav__link">
+    Step 3: Load SDK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-initialize-the-sdk" class="md-nav__link">
+    Step 4: Initialize the SDK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-get-access-token" class="md-nav__link">
+    Step 5: Get access token
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-create-session" class="md-nav__link">
+    Step 6: Create session
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-start-session" class="md-nav__link">
+    Step 7: Start session
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-get-verification-result" class="md-nav__link">
+    Step 8: Get verification result
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-handle-verification-result" class="md-nav__link">
+    Step 9: Handle verification result
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-recapture-the-images" class="md-nav__link">
+    Step 10: Recapture the images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-html-implementation" class="md-nav__link">
+    Example HTML implementation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Integrations
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Integrations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/stream-log-data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About log streaming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/stream-splunk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feed audit logs to Splunk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Other Topics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Other Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other-Topics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    In this section
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Personalize app
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Personalize app
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other-Topics/personalize-app/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personalize the application
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other-Topics/personalize-app/stylesheet-spec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stylesheet specification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    How it works
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-configure-your-app" class="md-nav__link">
+    Step 1: Configure your app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-implement-callback" class="md-nav__link">
+    Step 2: Implement callback
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-load-sdk" class="md-nav__link">
+    Step 3: Load SDK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-initialize-the-sdk" class="md-nav__link">
+    Step 4: Initialize the SDK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-get-access-token" class="md-nav__link">
+    Step 5: Get access token
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-create-session" class="md-nav__link">
+    Step 6: Create session
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-start-session" class="md-nav__link">
+    Step 7: Start session
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-get-verification-result" class="md-nav__link">
+    Step 8: Get verification result
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-handle-verification-result" class="md-nav__link">
+    Step 9: Handle verification result
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-recapture-the-images" class="md-nav__link">
+    Step 10: Recapture the images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-html-implementation" class="md-nav__link">
+    Example HTML implementation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="idv-implement-idv-through-web-sdk">IDV: Implement IDV through Web SDK</h1>
+<p>Using our identity verification (IDV) APIs, you can reliably check your customers' identity against their documents, for example, a driver’s license or a passport. After successful check, you can enable their further transactions, for example, allowing them to open a new bank account online or to pick up a rental car. </p>
+<p>Follow this guide to integrate Transmit IDV into your website.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you use Transmit's hosted identity experience, follow a different guide: <a href="">Web quick start for a hosted experience</a>. </p>
+</div>
+<h2 id="how-it-works">How it works</h2>
+<p>Here's an example of an IDV process. Interaction with Transmit APIs is shown in pink; the table also shows related integration  steps.</p>
+<p>After initializing the SDK (<a href="#step-4-initialize-the-sdk">Step 4</a>), your backend continues by getting an access token (<a href="#step-5-get-access-token">Step 5</a>) and creating a session (<a href="#step-6-create-session">Step 6</a>). After this, your client starts a session (<a href="#step-7-start-session">Step 7</a>). The SDK executes the verification process with the user using the Transmit identity verification experience. Once all the required images are submitted, Transmit starts processing the verification while the SDK polls for its status. Once processing is completed, the SDK notifies the app (<a href="#step-2-implement-callback">Step 2</a>) so it can obtain the verification result (<a href="#step-8-get-verification-result">Step 8</a>).  </p>
+<p>The diagram below maps the IDV process stages with the required implementation steps:  </p>
+<p><img alt="" src="../../assets/idv_web_sdk_seq_200.png" />  </p>
+<h2 id="step-1-configure-your-app">Step 1: Configure your app</h2>
+<p>To integrate your app with Transmit, you'll need to configure an application in the Admin Portal.  </p>
+<p>From the <a href="https://portal.transmitsecurity.io/applications">Applications</a> page, <a href="/guides/user/create_new_application.md">create an application</a> or use an existing application. Enter the following settings:
+1. For <strong>Client type</strong> , select <strong>Web</strong>.<br />
+2. For <strong>Redirect URI</strong> , enter your website URL. This is a required field.  </p>
+<p>Your client ID and client secret for API calls are auto generated upon app creation.  </p>
+<h2 id="step-2-implement-callback">Step 2: Implement callback</h2>
+<p>After starting the session (see <a href="#step-7-start-session">Step 7: Start session</a>), the verification moves through different events and statuses. For example, the status will indicate if the process was completed successfully so the backend can fetch the verification result. For every change, the SDK will invoke a callback method defined by your application. You need to implement these callback methods.  </p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">sdkCallBacks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Notifies when user has started an image capturing session.</span>
+<span class="w">  </span><span class="nx">sessionStarted</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">sessionId</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+
+<span class="w">  </span><span class="c1">// Notifies when user has uploaded an image. </span>
+<span class="w">  </span><span class="nx">imageSubmitted</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">sessionId</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">type</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+
+<span class="w">  </span><span class="c1">// Notifies when user has finished uploading images and the verification has started.</span>
+<span class="w">  </span><span class="nx">processing</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">sessionId</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w">  </span>
+
+<span class="w">  </span><span class="c1">// Notifies when verification process completed, and the result can be obtained (via backend request).</span>
+<span class="w">  </span><span class="nx">completed</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">sessionId</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+
+<span class="w">  </span><span class="c1">// Notifies when we require re-capturing an image.</span>
+<span class="w">  </span><span class="nx">recapture</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">sessionId</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+
+<span class="w">  </span><span class="c1">// Nofities when an error occurs.</span>
+<span class="w">  </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">sessionId</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="p">};</span>
+</code></pre></div>
+<h2 id="step-3-load-sdk">Step 3: Load SDK</h2>
+<p>To load the SDK, include the following HTML script tag in all the relevant pages of your front-end web application:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://platform-websdk.transmitsecurity.io/platform-websdk/latest/ts-platform-websdk.js&quot;</span> <span class="na">defer</span><span class="o">=</span><span class="s">&quot;true&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;ts-platform-script&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Then add the code below to wait for the SDK loading event:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;ts-platform-script&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// do here things with `tsPlatform`</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="step-4-initialize-the-sdk">Step 4: Initialize the SDK</h2>
+<p>Configure the SDK globally for all the modules by calling the SDK's <code>initialize()</code> method, as in the example below:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Configures the SDK with your client ID from Step 1 and initial verification params</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">tsPlatform</span><span class="p">.</span><span class="nx">initialize</span><span class="p">({</span><span class="w"> </span><span class="nx">clientId</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CLIENT_ID</span><span class="p">],</span><span class="w"> </span><span class="nx">IDV</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">serverPath</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://api.transmitsecurity.io/verify&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Use api.eu.transmitsecurity.io for EU clusters</span>
+<span class="w">  </span><span class="nx">consentVersion</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[CONSENT_VERSION]&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// ID of the consent document approved by the user</span>
+<span class="w">  </span><span class="nx">callbacks</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CALLBACKS</span><span class="p">],</span><span class="w"> </span><span class="c1">// Callback methods implemented in Step 2</span>
+<span class="p">}});</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>The SDK should be initialized only once on each relevant page.</li>
+<li>The ID of the consent document is stored by Transmit (see <a href="/guides/verify/idv_user_consent.md">User consent for identity verification</a>).</li>
+<li>By default, the verification UI will be available in English. However, the IDV object supports a <code>language</code> param, which can also be set to <code>pt</code> for Portuguese or <code>es</code> for Spanish.</li>
+<li>The IDV object supports an optional <code>rootElement</code> string param to specify the ID of a DIV container with the SDK's IDV GUI. If unspecified, the SDK will insert a new DIV container with IDV GUI elements inside the HTML body.  </li>
+</ul>
+</div>
+<h2 id="step-5-get-access-token">Step 5: Get access token</h2>
+<p>An access token is required to authorize the backend API calls, such as for <a href="#step-6-create-session">creating a verification session</a> and <a href="#step-8-get-verification-result">obtaining the result</a>. When needed, obtain an access token using the /token request below. See <a href="https://developer.transmitsecurity.com/guides/user/retrieve_client_tokens/">Get client access tokens guide</a> for more information. </p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">fetch</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;node-fetch&#39;</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">formData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">client_id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;[CLIENT_ID]&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Replace with client ID obtained in Step 1</span>
+<span class="w">    </span><span class="nx">client_secret</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;[CLIENT_SECRET]&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Replace with client secret obtained in Step 1</span>
+<span class="w">    </span><span class="nx">grant_type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;client_credentials&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">resource</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://verify.identity.security&#39;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">resp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span>
+<span class="w">    </span><span class="sb">`https://api.transmitsecurity.io/oidc/token`</span><span class="p">,</span><span class="w"> </span><span class="c1">// Use api.eu.transmitsecurity.io for EU clusters</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/x-www-form-urlencoded&#39;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">formData</span><span class="p">).</span><span class="nx">toString</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">resp</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
+<span class="w">  </span><span class="c1">// Process the response</span>
+<span class="p">}</span>
+<span class="nx">run</span><span class="p">();</span>
+</code></pre></div>
+<h2 id="step-6-create-session">Step 6: Create session</h2>
+<p>Before your app can initiate the verification process, your backend must create a session in order to provide a secure context for the flow. Create a session by sending a <code>/v1/verification</code> request.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">fetch</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;node-fetch&#39;</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">resp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span>
+<span class="w">    </span><span class="s1">&#39;https://api.transmitsecurity.io/verify/api/v1/verification&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Use api.eu.transmitsecurity.io for EU clusters</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;method&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;headers&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;Authorization&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Bearer &lt;YOUR_JWT_HERE&gt;&quot;</span><span class="w"> </span><span class="c1">// Replace with access token obtained in Step 3</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">resp</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">  </span><span class="c1">// Process the response</span>
+<span class="p">}</span>
+<span class="nx">run</span><span class="p">();</span>
+</code></pre></div>
+<p>The response contains a <code>start_token</code> that will be used to start the verification on the client side (in <a href="#step-7-start-session">Step 7: Start Session</a>), and the <code>session_id</code> required to obtain the <a href="#step-8-get-verification-result">verification result</a>. 
+For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;start_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ca766ed78c8c0b7824dfea356ed30b72&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;session_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;H1I12oskjzsdhskj4&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;expiration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-07-18T09:57:46.950Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;missing_images&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;document_front&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;document_back&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;selfie&quot;</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="step-7-start-session">Step 7: Start session</h2>
+<p>Once a session is created, initiate the verification process using the <code>start()</code> SDK method. Add the code below to your app, passing the <code>start_token</code> value returned in the previous step. If successful, the SDK will start a verification process for the user and guide them through the entire identity verification flow using the Transmit experience.
+Calling this method will add the verification UI to the DOM, allowing the user to start the verification process, and activate a callback method with data indicating the status of the verification (see <a href="#step-2-implement-callback">Step 2: Implement callback</a>). </p>
+<div class="highlight"><pre><span></span><code><span class="nb">window</span><span class="p">.</span><span class="nx">tsPlatform</span><span class="p">.</span><span class="nx">idv</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="nx">startToken</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="step-8-get-verification-result">Step 8: Get verification result</h2>
+<p>Once the verification process starts, your application can track it using the callback methods implemented in step 2.</p>
+<p>After all the required images are successfully submitted, Transmit automatically starts processing the verification and the SDK starts polling to check the status. If the status is <code>completed</code>, your backend should send the request below to obtain the verification result (see <a href="https://developer.transmitsecurity.com/openapi/verify/verifications/#operation/getResult">Get verification results API reference</a>):</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">fetch</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;node-fetch&#39;</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;[SESSION_ID]&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Replace with session ID returned in Step 7</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">resp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span>
+<span class="w">    </span><span class="sb">`https://api.transmitsecurity.io/verify/api/v1/verification/</span><span class="si">${</span><span class="nx">sid</span><span class="si">}</span><span class="sb">/result`</span><span class="p">,</span><span class="w"> </span><span class="c1">// Use api.eu.transmitsecurity.io for EU clusters</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Bearer [ACCESS_TOKEN]&#39;</span><span class="w"> </span><span class="c1">// Replace with access token obtained in Step 6</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">resp</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
+<span class="w">  </span><span class="c1">// Process the response </span>
+<span class="p">}</span>
+<span class="nx">run</span><span class="p">();</span>
+</code></pre></div>
+<h2 id="step-9-handle-verification-result">Step 9: Handle verification result</h2>
+<p>Your service should define the user experience based on the verification result, indicated by the <code>recommendation</code> field:  </p>
+<ul>
+<li>If <code>ALLOW</code>: the identity verification process was completed successfully. The response includes user details collected from the document (like their name and birthday), which can be used to enrich the user's profile, and details about the document used to prove their identity.    </li>
+<li>If <code>CHALLENGE</code>: the identity verification process didn’t succeed, since at least one verification check didn’t pass. The response includes extracted (yet unverified) info and indicates which checks didn't pass and why. This info can be used to review unsuccessful sessions or analyze failed verification attempts. You should proceed as suitable for your use case, typically by initiating a manual review process.  </li>
+<li>If <code>DENY</code>: the identity verification indicates a high likelihood of attempted fraud. The response includes the extracted (yet unverified) info and indicates which checks didn't pass and why. You should block the user or initiate an in-depth manual review to avoid onboarding a fraudulent user.  </li>
+</ul>
+<p>Collected information is arranged inside nested objects: <code>person</code>, <code>document</code>, and <code>additional_info</code>.   </p>
+<p>Besides the composite verification result, the response provides information about individual checks inside the nested <code>checks</code> object.  </p>
+<details>
+
+<summary>Response example for successful ID verification:  </summary>
+
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;session_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;H1I12oskjzsdhskj4&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;complete&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ALLOW&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;person&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;full_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Marie Salomea Skłodowska-Curies&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Marie&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Curies&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;national_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123ABC&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;date_of_birth&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1867-11-07T00:00:00.000Z&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;document&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NY&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;national_id&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1234567&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;serial_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1234567&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;issue_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1867-11-07T00:00:00.000Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;expiration_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1867-11-07T00:00:00.000Z&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;additional_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USA&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Indiana&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Indianapolis&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;street&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Snowy Ridge Road&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;house_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;apartment_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;postcode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;56789&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;full_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1234 Snowy Ridge Road Indianapolis, IN 56789&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;national_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;citizen&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;resident&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;employment&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;profession&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;checks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;document_validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ALLOW&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;document_authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ALLOW&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;document_liveness&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ALLOW&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;biometric_matching&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ALLOW&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;biometric_liveness&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ALLOW&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;flagged_identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ALLOW&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;risk_recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ALLOW&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+</details>
+
+<p>If ID verification fails, the response indicates the reasons behind it. </p>
+<details>
+
+<summary>Response example for unsuccessful ID verification:  </summary>
+
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;session_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;complete&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DENY&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">// EXTRACTED DATA...</span>
+<span class="w">  </span><span class="nt">&quot;checks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;document_validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ALLOW&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;document_authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ALLOW&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;document_liveness&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DENY&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;reasons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;presentation_attack&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;biometric_matching&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CHALLENGE&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;reasons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;biometric_mismatch&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;biometric_liveness&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DENY&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">&quot;reasons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;mask detected&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;flagged_identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DENY&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;reasons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;multiple_same_identity_attempts&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;risk_recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;recommendation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DENY&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;reasons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;action_is_suspected_fraud&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+
+<h2 id="step-10-recapture-the-images">Step 10: Recapture the images</h2>
+<p>Recapture the required images in case the recapture status is returned. For example, if some data can't be extracted because of poor image quality.
+User will return to the beginning of the flow and go through the verification process again. Data regarding their stage will be delegated to a callback method.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">window</span><span class="p">.</span><span class="nx">tsPlatform</span><span class="p">.</span><span class="nx">idv</span><span class="p">.</span><span class="nx">recapture</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="example-html-implementation">Example HTML implementation</h2>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>IDV Demo<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">body</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;margin: 0;&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;start-verification&quot;</span><span class="p">&gt;</span>start<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://platform-websdk.transmitsecurity.io/platform-websdk/latest/ts-platform-websdk.js&quot;</span> <span class="na">defer</span><span class="o">=</span><span class="s">&quot;true&quot;</span>
+    <span class="na">id</span><span class="o">=</span><span class="s">&quot;ts-platform-script&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">sdkCallBacks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">sessionStarted</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">sessionId</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">      </span><span class="nx">imageSubmitted</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">sessionId</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">type</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">      </span><span class="nx">processing</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">sessionId</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">      </span><span class="nx">completed</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">sessionId</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">      </span><span class="nx">recapture</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">sessionId</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">      </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">sessionId</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;ts-platform-script&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">sdkInit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">clientId</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;abcdefg&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">IDV</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">consentVersion</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;123456&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">serverPath</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;http://localhost:3030/verify&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">language</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;en&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">rootEelement</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;sdk-root-container&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="nx">sdkCallBacks</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">      </span><span class="nb">window</span><span class="p">.</span><span class="nx">tsPlatform</span><span class="p">.</span><span class="nx">initialize</span><span class="p">(</span><span class="nx">sdkInit</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;start-verification&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nb">window</span><span class="p">.</span><span class="nx">tsPlatform</span><span class="p">.</span><span class="nx">idv</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="nx">jsonRes</span><span class="p">.</span><span class="nx">startToken</span><span class="p">)</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/vassily-lapitsky-b4236a16/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      
+    
+  </body>
+</html>

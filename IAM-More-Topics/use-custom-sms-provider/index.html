@@ -1,0 +1,1053 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../manage-groups/">
+      
+      
+        <link rel="next" href="../verify-id-native-vebview/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+    
+    
+      
+        <title>Use custom SMS providers - IAM Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#use-custom-sms-providers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IAM Docs" class="md-header__button md-logo" aria-label="IAM Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IAM Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Use custom SMS providers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IAM Docs" class="md-nav__button md-logo" aria-label="IAM Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    IAM Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    B2B Authentication
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            B2B Authentication
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../B2B-Authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../B2B-Authentication/how-it-works/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How it works
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../B2B-Authentication/login-members/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log in members
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../B2B-Authentication/manage-roles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manage and assign roles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    IAM More Topics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            IAM More Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    In this section
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../federate-oidc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Federate SSO through OIDC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manage-groups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manage user groups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Use custom SMS providers
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Use custom SMS providers
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    How it works
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-default-sms-provider" class="md-nav__link">
+    Set up default SMS provider
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-twilio" class="md-nav__link">
+    Set up Twilio
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-saleforce-marketing-cloud" class="md-nav__link">
+    Set up Saleforce Marketing Cloud
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-other-sms-providers" class="md-nav__link">
+    Set up other SMS providers
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verify-id-native-vebview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IDV: Implement native webview using hosted experience
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verify-id-web-sdk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IDV: Implement IDV through Web SDK
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Integrations
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Integrations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/stream-log-data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About log streaming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/stream-splunk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feed audit logs to Splunk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Other Topics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Other Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other-Topics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    In this section
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Personalize app
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Personalize app
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other-Topics/personalize-app/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personalize the application
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other-Topics/personalize-app/stylesheet-spec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stylesheet specification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    How it works
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-default-sms-provider" class="md-nav__link">
+    Set up default SMS provider
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-twilio" class="md-nav__link">
+    Set up Twilio
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-saleforce-marketing-cloud" class="md-nav__link">
+    Set up Saleforce Marketing Cloud
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-other-sms-providers" class="md-nav__link">
+    Set up other SMS providers
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="use-custom-sms-providers">Use custom SMS providers</h1>
+<p>To authenticate users or to verify their phone numbers, you can deliver one-time passcodes (OTPs) in SMS messages.  </p>
+<h2 id="how-it-works">How it works</h2>
+<p>By default, SMS messages are delivered via Transmit's own service, but you can configure the platform to send out SMS messages via Twilio, Salesforce Marketing Cloud (SMC), or other backend integrations. This feature may be useful if you already use a third-party SMS provider, when you investigate issues using the provider's logs, or when you need custom sender phone numbers. The configuration is set on a tenant's level.  </p>
+<p>For example, you may wish to send SMS messages from local phone numbers, as they are often considered more credible.  </p>
+<h2 id="set-up-default-sms-provider">Set up default SMS provider</h2>
+<p>Go to <strong>Settings</strong> &gt; <strong>SMS provider</strong>.  </p>
+<p>If you choose <strong>Default</strong> under <strong>SMS Provider</strong>, the platform will dispatch all your SMS messages via Transmit's own SMS service. This option doesn't require additional configuration outside Transmit's APIs.  </p>
+<h2 id="set-up-twilio">Set up Twilio</h2>
+<p>You can set up Twilio as your SMS provider from the Admin Portal. </p>
+<p>From <strong>Settings</strong> &gt; <strong>SMS provider</strong>, select <strong>Twilio</strong> as the SMS provider and configure the following settings:
+- <strong>Account SID</strong>: your Twilio account SID
+- <strong>Auth Token</strong>: your Twilio auth token
+- <strong>Sender setting</strong>: Allows you to either configure the sender phone number directly, or the Messaging Service ID to use the sender settings configured for your Twilio <a href="https://www.twilio.com/docs/messaging/services">Messaging Service</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After saving, you should verify that SMS messages are sent as expected.</p>
+</div>
+<p><img alt="" src="../../assets/img/sms_provider_twilio.png" />  </p>
+<h2 id="set-up-saleforce-marketing-cloud">Set up Saleforce Marketing Cloud</h2>
+<p>You can set up Salesforce Marketing Cloud (SMC) as your SMS provider from the <a href="https://portal.transmitsecurity.io/">Admin Portal</a>.  </p>
+<p>From <strong>Settings</strong> &gt; <strong>SMS provider</strong>, select <strong>Salesforce Marketing Cloud</strong> as the SMS provider and configure the parameters:  </p>
+<ul>
+<li><strong>Subdomain</strong>: Your Salesforce subdomain.  </li>
+<li><strong>Client ID</strong>: Your <a href="https://help.salesforce.com/s/articleView?id=sf.remoteaccess_oauth_client_credentials_flow.htm&amp;type=5">client identifier with Salesforce</a> (also known as <strong>Consumer key</strong>).  </li>
+<li><strong>Client Secret</strong>: Your <a href="https://help.salesforce.com/s/articleView?id=sf.remoteaccess_oauth_client_credentials_flow.htm&amp;type=5">client secret with Salesforce</a> (also known as <strong>Consumer secret</strong>).  </li>
+<li><strong>Message ID</strong>: Your message identifier with Salesforce.  </li>
+<li><strong>Package Type</strong>: The parameter enables you to choose legacy Salesforce packages. Default value: <strong>enhanced</strong>. Note that <a href="https://help.salesforce.com/s/articleView?id=000380904&amp;type=1">Salesforce has ended support for legacy packages</a>.  </li>
+</ul>
+<p>Visit <a href="https://help.salesforce.com/s/articleView?id=sf.safety_cloud_and_marketing_cloud.htm&amp;type=5">Salesforce: Safety Cloud</a> for further information. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After saving the configuration, you should verify that SMS delivery works as expected.  </p>
+</div>
+<p><img alt="" src="../../assets/img/sms_provider_salesforce.png" />  </p>
+<h2 id="set-up-other-sms-providers">Set up other SMS providers</h2>
+<p>You can integrate with other custom SMS providers by implementing a gateway. This gateway should listen for messages from Transmit whenever you need to send an SMS. Once the gateway receives a message, it should forward it as an SMS through the provider you've set up on your end.</p>
+<p>For a custom SMS gateway, you need to implement the following: </p>
+<ul>
+<li>
+<p>Two endpoints:  </p>
+<ul>
+<li>POST endpoint for SMS processing  </li>
+<li>GET endpoint for endpoint validation  </li>
+</ul>
+</li>
+<li>
+<p>One API call: register the endpoints with Transmit  </p>
+</li>
+</ul>
+<p>This setup will work in a manner similar to <a href="">webhooks</a> where IAM Auth will push messages to your POST endpoint.  </p>
+<p>To implement the SMS gateway:  </p>
+<ol>
+<li>Create an endpoint for SMS processing. Upon an incoming POST request with SMS data, the endpoint should check the <code>X-API-Key</code> value (must match <code>api_key</code> in step 3), dispatch the SMS, and respond with a success code (<code>200</code>). Example incoming cURL request:  </li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Example endpoint URI: &quot;https://acme.com/send-sms&quot;</span>
+curl<span class="w"> </span>--location<span class="w"> </span>--request<span class="w"> </span>POST<span class="w"> </span><span class="s1">&#39;[GATEWAY_ENDPOINT_URI]&#39;</span><span class="w"> </span><span class="se">\ </span>
+--header<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\ </span>
+<span class="c1"># API Key for endpoint registration (see step 3)  </span>
+--header<span class="w"> </span><span class="s1">&#39;X-API-Key: {API_KEY}&#39;</span><span class="w"> </span><span class="se">\ </span>
+--data<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;phone_number&quot;: string,</span>
+<span class="s1">    &quot;sender_id&quot;: string,</span>
+<span class="s1">    &quot;message&quot;: string</span>
+<span class="s1">}&#39;</span>
+</code></pre></div>
+2. Create an additional GET endpoint (at the same URL) that handles the validation challenge. This endpoint should be able to accept a GET request with payload like this: </p>
+<p><div class="highlight"><pre><span></span><code>Accept:<span class="w"> </span>application/json,<span class="w"> </span>text/plain,<span class="w"> </span>*/*<span class="w"> </span><span class="se">\</span>
+content-length:<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+Host:<span class="w"> </span>example.com<span class="w"> </span><span class="se">\</span>
+<span class="c1"># API Key for endpoint registration (see step 3)</span>
+X-API-Key:<span class="w"> </span>abcd1234-0fae-4ce6-97c4-ca9ad4123b0d<span class="w"> </span><span class="se">\ </span>
+X-Scheme:<span class="w"> </span>https<span class="w"> </span><span class="se">\</span>
+X-Verification-Key:<span class="w"> </span>AbCdZ3hJxx826qTmvwepy<span class="w"> </span><span class="se">\</span>
+</code></pre></div>
+Each validation request includes a random <code>X-Verification-Key</code> value in the header. The verification endpoint should extract this value and echo it back in the response body so Transmit can match the request and response.<br />
+Here's an example implementation that can process the validation challenge:  </p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;/send-sms&#39;</span><span class="p">,</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Retrieve the header value.</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;X-Verification-Key&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// API key you register in step 3. </span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">my_api_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;abcd1234-0fae-4ce6-97c4-ca9ad4123b0d&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Make sure that the API key in the request is the same you specify in step 3.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;X-API-Key&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nx">my_api_key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Invalid request&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Set the response type.  </span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">type</span><span class="p">(</span><span class="s1">&#39;application/json&#39;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Set the status code of the response.</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Send the key value in the response body. </span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w">  </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">key</span><span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>Register your endpoints on the platform. To do that, send a one-time request like this:    </li>
+</ol>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--location<span class="w"> </span>--request<span class="w"> </span>PUT<span class="w"> </span><span class="s1">&#39;https://api.transmitsecurity.io/cis/v1/tenantsmsproviders&#39;</span><span class="w"> </span><span class="se">\</span>
+--header<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+--header<span class="w"> </span><span class="s1">&#39;Authorization: Bearer{BEARER_TOKEN}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="c1"># Include the gateway details in the payload. </span>
+<span class="c1"># Example URI: &quot;https://acme.com/send-sms&quot;</span>
+--data<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;provider&quot;: &quot;CustomGateway&quot;,</span>
+<span class="s1">    &quot;custom_gateway&quot;:{</span>
+<span class="s1">        &quot;uri&quot;: &quot;{GATEWAY_ENDPOINT_URI}&quot;, </span>
+<span class="s1">        &quot;api_key&quot;: &quot;{API_KEY}&quot; </span>
+<span class="s1">}&#39;</span>
+</code></pre></div>
+<p>Upon this request, Transmit updates your SMS provider configuration and responds with the validation challenge (see step 2). If the validation is successful, the platform will start delivering SMS messages to your POST endpoint (see step 1).  </p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/vassily-lapitsky-b4236a16/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      
+    
+  </body>
+</html>
