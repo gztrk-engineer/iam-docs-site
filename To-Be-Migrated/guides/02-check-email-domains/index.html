@@ -768,7 +768,7 @@
         
   
   <span class="md-ellipsis">
-    API Documentation
+    API documentation
   </span>
   
 
@@ -889,10 +889,10 @@
       
         <li class="md-nav__item">
   <a href="#check-a-plaintext-email-address" class="md-nav__link">
-    Check a Plaintext Email Address
+    Check a plaintext email address
   </a>
   
-    <nav class="md-nav" aria-label="Check a Plaintext Email Address">
+    <nav class="md-nav" aria-label="Check a plaintext email address">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -923,29 +923,29 @@
       
         <li class="md-nav__item">
   <a href="#check-a-hashed-email-address" class="md-nav__link">
-    Check a Hashed Email Address
+    Check a hashed email address
   </a>
   
-    <nav class="md-nav" aria-label="Check a Hashed Email Address">
+    <nav class="md-nav" aria-label="Check a hashed email address">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#about-email-address-hashing" class="md-nav__link">
-    About Email Address Hashing
+    About email address hashing
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#request-parameters_1" class="md-nav__link">
-    Request Parameters
+    Request parameters
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#code-examples_1" class="md-nav__link">
-    Code Examples
+    Code examples
   </a>
   
 </li>
@@ -1108,10 +1108,10 @@
       
         <li class="md-nav__item">
   <a href="#check-a-plaintext-email-address" class="md-nav__link">
-    Check a Plaintext Email Address
+    Check a plaintext email address
   </a>
   
-    <nav class="md-nav" aria-label="Check a Plaintext Email Address">
+    <nav class="md-nav" aria-label="Check a plaintext email address">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1142,29 +1142,29 @@
       
         <li class="md-nav__item">
   <a href="#check-a-hashed-email-address" class="md-nav__link">
-    Check a Hashed Email Address
+    Check a hashed email address
   </a>
   
-    <nav class="md-nav" aria-label="Check a Hashed Email Address">
+    <nav class="md-nav" aria-label="Check a hashed email address">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#about-email-address-hashing" class="md-nav__link">
-    About Email Address Hashing
+    About email address hashing
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#request-parameters_1" class="md-nav__link">
-    Request Parameters
+    Request parameters
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#code-examples_1" class="md-nav__link">
-    Code Examples
+    Code examples
   </a>
   
 </li>
@@ -1237,7 +1237,7 @@
 <li><a href="#check-a-hashed-email-address">Check a hashed email address</a></li>
 <li><a href="#check-a-web-domain">Check a web domain for compromised email addresses</a></li>
 </ul>
-<h2 id="check-a-plaintext-email-address">Check a Plaintext Email Address</h2>
+<h2 id="check-a-plaintext-email-address">Check a plaintext email address</h2>
 <p><strong>Request URL</strong>: <code>{BASE_URL}/api/v1/email/check</code></p>
 <p><strong>Request method:</strong> <code>POST</code> </p>
 <p>This API call accepts a plaintext email address and checks it for known data breaches.</p>
@@ -1350,11 +1350,9 @@
 </details>
 
 <h3 id="response-examples">Response Examples</h3>
-<details>
-<summary>Verified email address: found  breaches</summary>
-<br>
-
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<details class="note">
+<summary>Verified email address: Found breaches</summary>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;john.smith@example.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;records&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;isAssigned&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
@@ -1379,30 +1377,28 @@
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| email | string | The email address. |
-| records | integer | Incident count for the email address. |
-| isAssigned | boolean | Indicator of whether the email is address is assigned to a domain: `true` or `false`. |
-| breaches | list | List / array of data breach incidents and their description. |
-| breachId | integer | The ID of the incident in the Breach Report Database. |
-| title | string | The title of the incident in the Breach Report Database. |
-| createdAt| string | The date the incident was added to the Breach Report Database. |
-| compromisedAccounts | integer | The total number of compromised accounts. |
-| breachYear | integer | Year the incident occured. |
-| breachMonth | integer | Month of the incident. |
-| breachDay | integer | Day of the incident. |
-| url | string | The URL to the sources of the incident. |
-| logo | string | The logo of the incident. |
-| description | string | Text description of the incident. |
-| breachDataTypes| list | List / array of exposed credential types in the incident. |
-
+Where: <br>
+<code>email</code> (string): The email address.  <br>
+<code>records</code> (integer): Incident count for the email address.  <br>
+<code>isAssigned</code> (boolean): Indicator of whether the email is address is assigned to a domain: <code>true</code> or <code>false</code>.  <br>
+<code>breaches</code>: List / array of data breach incidents and their description.  <br>
+<code>breachId</code> (integer): The ID of the incident in the Breach Report Database.  <br>
+<code>title</code> (string): The title of the incident in the Breach Report Database.  <br>
+<code>createdAt</code> (string): The date the incident was added to the Breach Report Database.  <br>
+<code>compromisedAccounts</code> (integer): The total number of compromised accounts.  <br>
+<code>breachYear</code> (integer): Year the incident occured.  <br>
+<code>breachMonth</code> (integer): Month of the incident.  <br>
+<code>breachDay</code> (integer): Day of the incident.  <br>
+<code>url</code> (string): The URL to the sources of the incident.  <br>
+<code>logo</code> (string): The logo of the incident.  <br>
+<code>description</code> (string): Text description of the incident.  <br>
+<code>breachDataTypes</code>: List / array of exposed credential types in the incident.  <br></p>
 </details>
-
 <details>
 <summary>Unverified email address: No breaches</summary>
 <br>
+
+For unverified email addresses, the API return number of breaches only (`0` if none). 
 
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test@example.com&quot;</span><span class="p">,</span>
@@ -1412,21 +1408,9 @@
 <span class="p">}</span>
 </code></pre></div>
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| email | string | Email that is checked. |
-| records | integer | Email incidents count. The value will be 0, if no breach data in the database.  |
-| isAssigned | boolean | Email verified by a user: true/false. |
-| breaches | integer | Incident count for the email address. |
-
 </details>
 
-<p align="center">
-  <br>
-  <img width="500" src="./img/chapter-separate.jpg" alt="">
-</p>
-
-<h2 id="check-a-hashed-email-address">Check a Hashed Email Address</h2>
+<h2 id="check-a-hashed-email-address">Check a hashed email address</h2>
 <p><strong>Request URL</strong>: <code>{BASE_URL}/api/v1/email-hash/check</code></p>
 <p><strong>Request method:</strong> <code>POST</code></p>
 <p>This API call accepts a SHA256-hash email address value. This is the recommended way to check email addresses using Breach Report API.</p>
@@ -1442,33 +1426,50 @@
 <li>Include the API key in the request header.</li>
 <li>Specify your hashed email address value in the request body.</li>
 </ol>
-<h3 id="about-email-address-hashing">About Email Address Hashing</h3>
+<h3 id="about-email-address-hashing">About email address hashing</h3>
 <p>Breach Report API only uses encrypted email address values. The encryption method is <strong>Argond2d(SHA256)</strong>.</p>
 <p>Before sending a query, generate the email address hash.</p>
 <details>
 <summary>How to produce an email address hash on Linux, on Mac OS or by using Git Bash on Windows.</summary>
 <br>
 
-1. Convert the email address to lowercase.
-2. In the terminal, run the following command: `echo -n {email} | sha256sum`. Here, `{email}` is an email address you want to check. Don't use the brackets!
-3. The command will produce a unique 64-character-long alphanumeric value that will look like: `8b063d4d3f323127ad8c13example69a747da2421db686144c5c982cc491e1ad`.
+1. Convert the email address to lowercase. <br>
+2. In the terminal, run the following command: 
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="o">{</span>email<span class="o">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sha256sum
+</code></pre></div>
+Here, `{email}` is an email address you want to check. Don't use the brackets! <br>
+3. 
+The command will produce a unique 64-character-long alphanumeric value that will look like this: 
+<div class="highlight"><pre><span></span><code>8b063d4d3f323127ad8c13example69a747da2421db686144c5c982cc491e1ad
+</code></pre></div>
+
 
 </details>
 
-<p>Alternatively, you may use an online hashing tool, for example, this <a href="https://emn178.github.io/online-tools/sha256.html">hash calculator on github.io</a>.</p>
-<h3 id="request-parameters_1">Request Parameters</h3>
-<details>
-<summary>Show the parameters.</summary>
-<br>
-
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| api-key | string | The key you can generate on the [portal](https://breachreport.com/portal/user-api). Must be included in the request header. |
-| hash | string | Hashed email address you want to check. |
-
-</details>
-
-<h3 id="code-examples_1">Code Examples</h3>
+<p>Or use an online hashing tool, for example, this <a href="https://emn178.github.io/online-tools/sha256.html">hash calculator on github.io</a>.</p>
+<h3 id="request-parameters_1">Request parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>The key you can generate on the <a href="https://breachreport.com/portal/user-api">portal</a>. Must be included in the request header.</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>Hashed email address you want to check.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="code-examples_1">Code examples</h3>
 <details>
 <summary>Shell command example</summary>
 <br>
@@ -1542,7 +1543,7 @@
 
 <h3 id="response-examples_1">Response examples</h3>
 <details>
-<summary>Verified Email Address - Found Breaches</summary>
+<summary>Verified email address: Found breaches</summary>
 <br>
 
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -1568,42 +1569,36 @@
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| emailHash | string | Hashed email address. |
-| records | integer | Email incidents count. |
-| isAssigned | boolean | The indicator whether the email is assigned: `true` or `false`. |
-| breaches | list | List / array of data breach description items. |
-| breachId | integer | The ID of the incident within Breach Report Database. |
-| title | string | The title of the incident. |
-| createdAt| string | The date the incident was added to our BR database. |
-| compromisedAccounts | integer | Total number of accounts (email addresses and such) that were compromised in the breach. |
-| breachYear | integer | The year the incident occured. |
-| breachMonth | integer | The month of the incident. |
-| url | string | The URL to the sources of the incident. |
-| logo | string | The logo of the incident. |
-| description | string | Text description of the incident. |
-| breachDataTypes| [string] | The list of leaked data types within the incident. |
+Where: <br>
+`email` (string): The email address.  <br>
+`records` (integer): Incident count for the email address.  <br>
+`isAssigned` (boolean): Indicator of whether the email is address is assigned to a domain: `true` or `false`.  <br>
+`breaches`: List / array of data breach incidents and their description.  <br>
+`breachId` (integer): The ID of the incident in the Breach Report Database.  <br>
+`title` (string): The title of the incident in the Breach Report Database.  <br>
+`createdAt` (string): The date the incident was added to the Breach Report Database.  <br>
+`compromisedAccounts` (integer): The total number of compromised accounts.  <br>
+`breachYear` (integer): Year the incident occured.  <br>
+`breachMonth` (integer): Month of the incident.  <br>
+`breachDay` (integer): Day of the incident.  <br>
+`url` (string): The URL to the sources of the incident.  <br>
+`logo` (string): The logo of the incident.  <br>
+`description` (string): Text description of the incident.  <br>
+`breachDataTypes`: List / array of exposed credential types in the incident.  <br>
 </details>
 
 <details>
-<summary>Unverified Email Address - Found Breaches</summary>
+<summary>Unverified email address: Found breaches</summary>
 <br>
 
-<div class="highlight"><pre><span></span><code>{
-  &quot;emailHash&quot;: &quot;d5b474f8a5135b224905b124e32ff50d2f31d95e1b1cdb5c21c36d7a7db58dce&quot;,
-  &quot;records&quot;: 23,
-  &quot;isAssigned&quot;: false,
-  &quot;breaches&quot;: 4
-}
+For unverified email addresses, the API only provides a number of breaches (0 if none): 
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;emailHash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d5b474f8a5135b224905b124e32ff50d2f31d95e1b1cdb5c21c36d7a7db58dce&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;records&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;isAssigned&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;breaches&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
+<span class="p">}</span>
 </code></pre></div>
-
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| emailHash | string | Hashed email address. |
-| records | integer | Incident count for the email address. The value will be 0 (zero), if no matches. |
-| isAssigned | boolean | Indicator of whether the email address is assigned to a domain: `true` or `false`. |
-| breaches | integer | Number of data breach cases fior the email address. |
 
 </details>
 
