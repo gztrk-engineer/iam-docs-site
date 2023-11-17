@@ -741,8 +741,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#top-level-structure" class="md-nav__link">
-    Top level structure
+  <a href="#structure" class="md-nav__link">
+    Structure
   </a>
   
 </li>
@@ -755,15 +755,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#style-variables" class="md-nav__link">
-    Style variables
+  <a href="#variables" class="md-nav__link">
+    Variables
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#style-matching-logic" class="md-nav__link">
-    Style matching logic
+  <a href="#style-matching" class="md-nav__link">
+    Style matching
   </a>
   
 </li>
@@ -1033,8 +1033,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#top-level-structure" class="md-nav__link">
-    Top level structure
+  <a href="#structure" class="md-nav__link">
+    Structure
   </a>
   
 </li>
@@ -1047,15 +1047,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#style-variables" class="md-nav__link">
-    Style variables
+  <a href="#variables" class="md-nav__link">
+    Variables
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#style-matching-logic" class="md-nav__link">
-    Style matching logic
+  <a href="#style-matching" class="md-nav__link">
+    Style matching
   </a>
   
 </li>
@@ -1087,7 +1087,7 @@
 <p class="admonition-title">Note</p>
 <p>Example spec using Stoplight (free tier): <a href="https://vassily.stoplight.io/docs/api-docs/branches/main/7feb65ed9ff60-stylesheet-model">Stoplight example</a>.  </p>
 </div>
-<h2 id="top-level-structure">Top level structure</h2>
+<h2 id="structure">Structure</h2>
 <p>The top level structure of the stylesheet is as follows:  </p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="s2">&quot;styles&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">styleObject1</span><span class="p">,</span><span class="w"> </span><span class="nx">styleObject2</span><span class="p">,...],</span>
@@ -1171,7 +1171,7 @@
 </code></pre></div></p>
 <p>To reuse properties, utilize <a href="#style-variables">style variables</a>. </p>
 <p>The available properties depend on the element type. Refer to <a href="">List of available properties</a> for more information. </p>
-<h2 id="style-variables">Style variables</h2>
+<h2 id="variables">Variables</h2>
 <p>Style variables can be reused throughout the <code>styles</code> section. These variables are defined within the <code>values</code> object.</p>
 <p>To specify variables, follow this pattern: 
 <div class="highlight"><pre><span></span><code><span class="nt">&quot;values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1185,7 +1185,7 @@
 <span class="w">    </span><span class="nt">&quot;secondary_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ffdd00&quot;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="style-matching-logic">Style matching logic</h2>
+<h2 id="style-matching">Style matching</h2>
 <p>We illustrate this section using the following example rulesets:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Ruleset 1</span>
