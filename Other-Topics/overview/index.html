@@ -731,6 +731,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1113,6 +1120,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1222,12 +1236,24 @@ safeguards and mitigations in the table below:</p>
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td>Device compromise</td>
+<td>Root / jailbreak detection, debugger detection, location spoofer detection, Man-in-the-middle (MITM) protection</td>
+<td>For example, the mobile SDK initiates a secure connection with the platform using Diffie-Hellmann key exchange to mitigate the MITM threat.</td>
+</tr>
+<tr>
+<td>SDK compromise</td>
+<td>Swizzle protection, hooking protection, tamper protection, resource modification protection, anti-cloning protection</td>
+<td>The SDK only detects threats against the SDK itself and provide protection to the mobile host application.</td>
+</tr>
+<tr>
+<td>User compromise</td>
+<td>Behavioral replay detection, tap-jacking protection, screen-sharing protection, emulator detection.</td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<h2 id="conclusion">Conclusion</h2>
+<p>Callsign provides many more security features than described on this page. For further details on how our security measures may help you, contact your client account manager.</p>
 
 
 
