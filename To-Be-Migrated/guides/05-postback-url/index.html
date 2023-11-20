@@ -632,6 +632,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../Other-Topics/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Technical security overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
     
     
     
@@ -642,10 +662,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -656,8 +676,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             Personalize app
           </label>
@@ -1297,11 +1317,6 @@
 
 </details>
 
-<p align="center">
-  <br>
-  <img width="500" src="./img/chapter-separate.jpg" alt="">
-</p>
-
 <h2 id="get-the-postback-url-address">Get the Postback URL Address</h2>
 <p><strong>Request URL</strong>: <code>{BASE_URL}/api/v1/postback</code></p>
 <p><strong>Request method:</strong> <code>GET</code></p>
@@ -1411,7 +1426,7 @@
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
-| status | string | Result of the operation - success or error. |
+| status | string | Result of the operation: success or error. |
 | postbackUrl | string | Current Postback URL address configuration. |
 
 </details>
@@ -1428,11 +1443,6 @@
 
 </details>
 
-<p align="center">
-  <br>
-  <img width="500" src="./img/chapter-separate.jpg" alt="">
-</p>
-
 <h2 id="set-the-postback-url-address">Set the Postback URL Address</h2>
 <p><strong>Request URL</strong>: <code>{BASE_URL}/api/v1/postback</code></p>
 <p><strong>Request method:</strong> <code>POST</code></p>
@@ -1446,17 +1456,27 @@
 <li>Specify the postback URL in the request body.</li>
 </ol>
 <h3 id="request-parameters_1">Request Parameters</h3>
-<details>
-<summary>Show the parameters.</summary>
-<br>
-
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| api-key | string | An API key you can generate on the [portal](https://breachreport.com/portal/user-api). Include this key in the request header. |
-| url | string | Target postback URL address. |
-
-</details>
-
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>An API key you can generate on the <a href="https://breachreport.com/portal/user-api">portal</a>. Include this key in the request header.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>Target postback URL address.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="code-examples_1">Code Examples</h3>
 <details>
 <summary>Shell command example.</summary>
@@ -1561,27 +1581,28 @@
 
 </details>
 
-<p align="center">
-  <br>
-  <img width="500" src="./img/chapter-separate.jpg" alt="">
-</p>
-
 <h2 id="clear-the-postback-url-address">Clear the Postback URL Address</h2>
 <p><strong>Request URL</strong>: <code>{BASE_URL}/api/v1/postback</code></p>
 <p><strong>Request method:</strong> <code>DEL</code></p>
 <p>Breach Report APi is designed to send notifications to the customer-specified URL address (Postback URL address).</p>
 <p>The request clears the postback URL configuration from your account. As a result of the operation, the API will no longer be able to send you new notifications.</p>
 <h3 id="request-parameters_3">Request Parameters</h3>
-<details>
-<summary>Show the parameters.</summary>
-<br>
-
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| api-key | string | An API key you can generate on the [portal](https://breachreport.com/portal/user-api). Include this key in the request header. |
-
-</details>
-
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>An API key you can generate on the <a href="https://breachreport.com/portal/user-api">portal</a>. Include this key in the request header.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="code-examples_2">Code Examples</h3>
 <details>
 <summary>Shell command example.</summary>
@@ -1671,11 +1692,6 @@
 </code></pre></div>
 
 </details>
-
-<p align="center">
-  <br>
-  <img width="500" src="./img/chapter-separate.jpg" alt="">
-</p>
 
 
 

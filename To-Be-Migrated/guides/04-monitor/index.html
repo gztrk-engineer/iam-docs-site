@@ -634,6 +634,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../Other-Topics/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Technical security overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
     
     
     
@@ -644,10 +664,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -658,8 +678,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             Personalize app
           </label>
@@ -1363,11 +1383,6 @@
 <li><a href="domain-monitoring">Stop domain monitoring</a></li>
 <li><a href="#assign-an-email-address">Assign an email address to a domain</a></li>
 </ul>
-<p align="center">
-  <br>
-  <img width="500" src="./img/chapter-separate.jpg" alt="">
-</p>
-
 <h2 id="start-email-monitoring">Start Email Monitoring</h2>
 <p><strong>Request URL</strong>: <code>{BASE_URL}/api/v1/email/{EMAIL_ID}/monitoring</code></p>
 <p><strong>Request method:</strong> <code>POST</code></p>
@@ -1380,17 +1395,27 @@
 <li>Specify your hashed email address in the request body.</li>
 </ol>
 <h3 id="request-parameters">Request Parameters</h3>
-<details>
-<summary>Show the parameters.</summary>
-<br>
-
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| api-key | string | An API key you can generate on the [portal](https://breachreport.com/portal/user-api). Include this key in the request header. |
-| EMAIL_ID | string | Identifier of the previously added email address to be put on the watchlist.  |
-
-</details>
-
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>An API key you can generate on the <a href="https://breachreport.com/portal/user-api">portal</a>. Include this key in the request header.</td>
+</tr>
+<tr>
+<td>EMAIL_ID</td>
+<td>string</td>
+<td>Identifier of the previously added email address to be put on the watchlist.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="code-examples">Code Examples</h3>
 <details>
 <summary>Shell command example.</summary>
@@ -1501,11 +1526,6 @@
 
 </details>
 
-<p align="center">
-  <br>
-  <img width="500" src="./img/chapter-separate.jpg" alt="">
-</p>
-
 <h2 id="start-domain-monitoring">Start Domain Monitoring</h2>
 <p><strong>Request URL</strong>: <code>{BASE_URL}/api/v1/email/{DOMAIN_ID}/monitoring</code></p>
 <p><strong>Request method:</strong> <code>POST</code></p>
@@ -1517,17 +1537,27 @@
 <li>Specify the domain ID inside the requested URL.</li>
 </ol>
 <h3 id="request-parameters_1">Request Parameters</h3>
-<details>
-<summary>Show the parameters.</summary>
-<br>
-
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| api-key | string | An API key you can generate on the [portal](https://breachreport.com/portal/user-api). Include this key in the request header. |
-| DOMAIN_ID | string | Identifier of the previously added domain to put on the watchlist.  |
-
-</details>
-
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>An API key you can generate on the <a href="https://breachreport.com/portal/user-api">portal</a>. Include this key in the request header.</td>
+</tr>
+<tr>
+<td>DOMAIN_ID</td>
+<td>string</td>
+<td>Identifier of the previously added domain to put on the watchlist.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="code-examples_1">Code Examples</h3>
 <details>
 <summary>Shell command example.</summary>
@@ -1650,17 +1680,27 @@
 <li>Specify the email address ID inside the requested URL.</li>
 </ol>
 <h3 id="request-parameters_2">Request Parameters</h3>
-<details>
-<summary>Show the parameters.</summary>
-<br>
-
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| api-key | string | An API key you can generate on the [portal](https://breachreport.com/portal/user-api). Include this key in the request header. |
-| EMAIL_ID | string | Identifier of the previously added email address to put on the watchlist.  |
-
-</details>
-
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>An API key you can generate on the <a href="https://breachreport.com/portal/user-api">portal</a>. Include this key in the request header.</td>
+</tr>
+<tr>
+<td>EMAIL_ID</td>
+<td>string</td>
+<td>Identifier of the previously added email address to put on the watchlist.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="code-examples_2">Code Examples</h3>
 <details>
 <summary>Shell command example.</summary>
@@ -1781,17 +1821,27 @@
 <li>Specify the domain ID inside the requested URL.</li>
 </ol>
 <h3 id="request-parameters_3">Request Parameters</h3>
-<details>
-<summary>Show the parameters.</summary>
-<br>
-
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| api-key | string | An API key you can generate on the [portal](https://breachreport.com/portal/user-api). Include this key in the request header. |
-| DOMAIN_ID | string | Identifier of the previously added domain to put on the watchlist.  |
-
-</details>
-
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>An API key you can generate on the <a href="https://breachreport.com/portal/user-api">portal</a>. Include this key in the request header.</td>
+</tr>
+<tr>
+<td>DOMAIN_ID</td>
+<td>string</td>
+<td>Identifier of the previously added domain to put on the watchlist.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="code-examples_3">Code Examples</h3>
 <details>
 <summary>Shell command example.</summary>
@@ -1914,18 +1964,32 @@
 <li>In the request body, specify the email address and the Domain ID.</li>
 </ol>
 <h3 id="request-parameters_4">Request Parameters</h3>
-<details>
-<summary>Show the parameters.</summary>
-<br>
-
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| api-key | string | An API key you can generate on the [portal](https://breachreport.com/portal/user-api). Include this key in the request header. |
-| email | string | Email address in the Breach Report database. |
-| domainId | string | Identifier of the domain in the Breach Report database. |
-
-</details>
-
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>An API key you can generate on the <a href="https://breachreport.com/portal/user-api">portal</a>. Include this key in the request header.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email address in the Breach Report database.</td>
+</tr>
+<tr>
+<td>domainId</td>
+<td>string</td>
+<td>Identifier of the domain in the Breach Report database.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="code-examples_4">Code Examples</h3>
 <details>
 <summary>Shell command example.</summary>
@@ -2069,11 +2133,6 @@
 </code></pre></div>
 
 </details>
-
-<p align="center">
-  <br>
-  <img width="500" src="./img/chapter-separate.jpg" alt="">
-</p>
 
 
 

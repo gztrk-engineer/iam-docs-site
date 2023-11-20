@@ -634,6 +634,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../Other-Topics/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Technical security overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
     
     
     
@@ -644,10 +664,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -658,8 +678,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             Personalize app
           </label>
@@ -1613,17 +1633,27 @@ For unverified email addresses, the API only provides a number of breaches (0 if
 <li>Specify the domain in the request body.</li>
 </ol>
 <h3 id="request-parameters_2">Request Parameters</h3>
-<details>
-<summary>Show the parameters.</summary>
-<br>
-
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| api-key | string | The key you can generate on the [portal](https://breachreport.com/portal/user-api). Must be included in the request header. |
-| domain | string | Web domain to be checked. |
-
-</details>
-
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>The key you can generate on the <a href="https://breachreport.com/portal/user-api">portal</a>. Must be included in the request header.</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>Web domain to be checked.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="code-examples_2">Code Examples</h3>
 <details>
 <summary>Shell command example</summary>
@@ -1746,11 +1776,6 @@ For unverified email addresses, the API only provides a number of breaches (0 if
 | emails | list | Empty list / array for compromised email addresses. |
 
 </details>
-
-<p align="center">
-  <br>
-  <img width="500" src="./img/chapter-separate.jpg" alt="">
-</p>
 
 
 
